@@ -1,0 +1,42 @@
+[package]
+name = "dasscord"
+version = "0.1.0"
+edition = "2021"
+authors = ["DassCord (https://github.com/leonardo-matheus)"]
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/leonardo-matheus/dasscord"
+description = "A light 'n clean discord client made with love using Rust"
+keywords = ["discord", "app", "client", "discord-client", "discord-app"]
+categories = ["web-programming", "gui"]
+exclude = [".github/**", "Cargo.lock"]
+
+[dependencies]
+dirs = "5.0.1"
+tracing = "0.1"
+image = "0.24.6"
+anyhow = "1.0.71"
+tokio = { version = "1.28.0", features = ["full"] }
+wry = "=0.18.2"
+colored = "2.0.0"
+strum_macros = "0.24.3"
+strum = "0.24.1"
+tauri = { version = "1", features = [ "system-tray", "api-all"] }
+simplelog = "0.11.0"
+log = "0.4"
+
+[build-dependencies]
+tauri-build = { version = "1.3.0", features = [] }
+
+[features]
+default = [ "custom-protocol" ]
+custom-protocol = [ "tauri/custom-protocol" ]
+devtools = [ "tauri/devtools" ]
+
+[profile.dev]
+debug = true
+debug-assertions = true
+
+[profile.release]
+debug = true
+debug-assertions = true
